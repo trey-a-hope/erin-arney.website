@@ -1,9 +1,61 @@
 <div class="container">
+        <!-- Name required alert. -->
+        <div class="alert alert-danger" role="alert" [hidden]="!(contactForm.controls.name.errors && attemptedSave)">
+            <p><span class="alert-link">Error</span> {{ "name" | alerttext }}</p>
+        </div> 
+        <!-- Email required alert. -->
+        <div class="alert alert-danger" role="alert" [hidden]="!(contactForm.controls.email.errors && attemptedSave)">
+            <p><span class="alert-link">Error</span> {{ "email" | alerttext }}</p>
+        </div>
+        <!-- Email required alert. -->
+        <div class="alert alert-danger" role="alert" [hidden]="!(contactForm.controls.phoneNumber.errors && attemptedSave)">
+            <p><span class="alert-link">Error</span> {{ "phone-number" | alerttext }}</p>
+        </div>
+        <!-- Message required alert. -->
+        <div class="alert alert-danger" role="alert" [hidden]="!(contactForm.controls.message.errors && attemptedSave)">
+            <p><span class="alert-link">Error</span> {{ "message" | alerttext }}</p>
+        </div> 
+        <!-- Email sent alert. -->
+        <div class="alert alert-success" role="alert" [hidden]="!successMessageShowing">
+                <p><span class="alert-link">Success </span> {{ "contact-sent" | alerttext }}</p>
+            </div>
+        <!-- Email failed alert. -->
+        <div class="alert alert-danger" role="alert" [hidden]="!errorMessageShowing">
+            <p><span class="alert-link">Error </span> {{ "contact-failed" | alerttext }}</p>
+        </div>
     <div class="jumbotron">
         <h1 class="animated slideInLeft">Contact</h1>
         <hr>
-        <p>Let’s link. I’d love to hear from you. (big bold lettering)
-                Interested in working together? Shoot me a message. I’m open to speaking engagements, poetry readings, writing work, and preceptorships.</p>
+        <p class="animated fadeIn">Let’s link. I’d love to hear from you.</p>
+        <p class="animated fadeIn">Interested in working together? Shoot me a message. I’m open to speaking engagements, poetry readings, writing work, and preceptorships.</p>
     </div>
-    <p>Possible form will go here to send a message to your email.</p>
-</div> 
+    <div class="col-xs-12">
+        <div class="row">
+            <form novalidate [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
+                <div class="col-md-6 form-line">
+                    <div class="form-group">
+                        <label for="exampleInputUsername">Your name</label>
+                        <input type="text" class="form-control" id="" placeholder=" Enter Name" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Email Address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail" placeholder=" Enter Email" formControlName="email">
+                    </div>	
+                    <div class="form-group">
+                        <label for="telephone">Phone Number</label>
+                        <input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit Number ." formControlName="phoneNumber">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="description"> Message</label>
+                        <textarea class="form-control" id="description" placeholder="Enter Your Message" formControlName="message"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                    </div>
+                </div>
+            </form>        
+        </div>
+    </div>
+</div>

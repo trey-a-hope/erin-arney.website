@@ -1,0 +1,4 @@
+/* Line between left and right side of contact page. */
+.form-line {
+    border-right: 1px solid lightgray;
+}

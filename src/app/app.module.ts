@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 import { HttpModule }                   from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -20,6 +21,12 @@ import { RoutingModule } from './/routing.module';
 
 //Services
 import { BlogService }                  from './services/blog.service';
+import { EmailService } from './services/email.service';
+
+//Pipes
+import { AlertTextPipe } from './pipes/AlertTextPipe';
+
+// enableProdMode();  //TODO: UNCOMMENT BEFORE PUSHING TO PROD.
 
 @NgModule({
   declarations: [
@@ -30,17 +37,21 @@ import { BlogService }                  from './services/blog.service';
     FooterComponent,
     ProjectsComponent,
     BlogComponent,
-    ContactComponent
+    ContactComponent,
+    AlertTextPipe
   ],
   imports: [
     BrowserModule,
     RoutingModule,
     NgbModule.forRoot(),
     Angular2FontawesomeModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    BlogService
+    BlogService,
+    EmailService
   ],
   bootstrap: [ 
     AppComponent 
