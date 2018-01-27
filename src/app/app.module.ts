@@ -1,30 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, enableProdMode } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
-import { HttpModule }                   from '@angular/http';
+import { BrowserModule }                    from '@angular/platform-browser';
+import { NgModule, enableProdMode }         from '@angular/core';
+import { NgbModule }                        from '@ng-bootstrap/ng-bootstrap';
+import { Angular2FontawesomeModule }        from 'angular2-fontawesome/angular2-fontawesome'
+import { HttpModule }                       from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+//Main App
+import { AppComponent }                     from './app.component';
 
 //Views
-import { HomeComponent } from './views/home/home.component';
-import { AboutComponent } from './views/about/about.component';
-import { NavbarComponent } from './views/navbar/navbar.component';
-import { FooterComponent } from './views/footer/footer.component';
-import { ProjectsComponent } from './views/projects/projects.component';
-import { BlogComponent } from './views/blog/blog.component';
-import { ContactComponent } from './views/contact/contact.component';
+import { HomeComponent }                    from './views/home/home.component';
+import { AboutComponent }                   from './views/about/about.component';
+import { NavbarComponent }                  from './views/navbar/navbar.component';
+import { FooterComponent }                  from './views/footer/footer.component';
+import { ProjectsComponent }                from './views/projects/projects.component';
+import { BlogComponent }                    from './views/blog/blog.component';
+import { ContactComponent }                 from './views/contact/contact.component';
 
 //Routing
-import { RoutingModule } from './/routing.module';
+import { RoutingModule }                    from './/routing.module';
 
 //Services
-import { BlogService }                  from './services/blog.service';
-import { EmailService } from './services/email.service';
+import { BlogService }                      from './services/blog.service';
+import { EmailService }                     from './services/email.service';
 
 //Pipes
-import { AlertTextPipe } from './pipes/AlertTextPipe';
+import { AlertTextPipe }                    from './pipes/AlertTextPipe';
+
+import { HashLocationStrategy, 
+         LocationStrategy }                  from '@angular/common';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 
 // enableProdMode();  //TODO: UNCOMMENT BEFORE PUSHING TO PROD.
 
@@ -38,7 +43,8 @@ import { AlertTextPipe } from './pipes/AlertTextPipe';
     ProjectsComponent,
     BlogComponent,
     ContactComponent,
-    AlertTextPipe
+    AlertTextPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,8 @@ import { AlertTextPipe } from './pipes/AlertTextPipe';
   ],
   providers: [
     BlogService,
-    EmailService
+    EmailService, 
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [ 
     AppComponent 

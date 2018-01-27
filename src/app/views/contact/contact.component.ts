@@ -26,7 +26,6 @@ export class ContactComponent implements OnInit {
             phoneNumber : new FormControl('', [ Validators.required ]),
             message     : new FormControl('', [ Validators.required ]),
         });
-
     }
 
     onSubmit() {
@@ -48,7 +47,7 @@ export class ContactComponent implements OnInit {
             this.emailService.sendEmail(to, subject, from, message).subscribe(
                 res => {
                     this.successMessageShowing = true;
-                    setTimeout(function(){
+                    setTimeout(() => {
                         this.successMessageShowing = false;
                     },3000);
                 },
