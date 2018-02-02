@@ -1,0 +1,40 @@
+@import '~sass/variables';
+@import '~sass/mixins';
+
+.navbar {
+    background: $primaryColor;
+}
+
+.navbar-default {
+    .navbar-nav > li > a { 
+        color: white !important; 
+        &:hover {
+            color: lightgray !important; 
+        }
+    }
+    .navbar-brand { 
+        color: white !important; 
+        &:hover {
+            color: lightgray !important; 
+        }
+    }
+
+    //TODO: DETERMINE HOW TO NEST THESE CLASSES BETTER.
+    .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+        color: white !important;
+        background-color: $primaryColor;
+    }
+
+    @media (max-width: 767px){
+        .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+            color: white !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: white !important;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: white !important;
+        }
+    }
+}
+
