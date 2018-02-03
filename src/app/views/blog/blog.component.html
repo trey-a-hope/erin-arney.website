@@ -1,7 +1,19 @@
 <div class="container">
     <div class="jumbotron">
-        <h1 class="animated slideInLeft">Blog</h1>
+        <h1 class="animated slideInLeft title">Blog</h1>
         <hr>
-        <p class="animated fadeIn">A compilation of thoughts and insights on health, the Black community, and current events.</p>
+        <p class="animated slideInRight subTitle">A compilation of thoughts and insights on health, the Black community, and current events.</p>
     </div>
-</div> 
+    <div class="animated fadeIn" *ngFor="let post of posts">
+        <div class="col-xs-4">
+            <div class="card">
+                <img class="card-img-top" width="100%" src="http://uvmbored.com/wp-content/uploads/2015/05/blog.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ post.title }}</strong></h5>
+                    <p class="card-text"><i class="fa fa-clock-o"></i> {{ post.published | date:'short' }}</p>
+                    <button class="btn btn-primary pull-right" (click)="goToBlog(post.id)">Go To Blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

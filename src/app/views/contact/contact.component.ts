@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/fo
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
     contactForm           : FormGroup;
@@ -40,7 +40,7 @@ export class ContactComponent implements OnInit {
         let messageControl      : AbstractControl   = this.contactForm.controls.message;
 
         if(this.contactForm.valid){
-            let to      : string = 'trey.a.hope@gmail.com';//TODO: CHANGE TO ERIN'S EMAIL WHEN PROJECT DONE.
+            let to      : string = 'erin.arney@bastyr.edu';
             let subject : string = 'New Contact - ' + nameControl.value;
             let from    : string = emailControl.value;
             let message : string = messageControl.value;

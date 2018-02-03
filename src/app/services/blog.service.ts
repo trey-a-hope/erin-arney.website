@@ -4,26 +4,40 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class BlogService {
+  blogId    : string = '3319631330907603735';
+  apiKey    : string = 'AIzaSyBkJkq5fz7S5xzOGanTlW2vWZBOVF670aA';
+  baseUrl   : string = 'https://www.googleapis.com/blogger/v3/blogs';
 
-  myPostsUrl: string = 'https://www.googleapis.com/blogger/v3/blogs/3319631330907603735/posts?key=AIzaSyBkJkq5fz7S5xzOGanTlW2vWZBOVF670aA';
-  //todo: break down to variables {blogId} and {apiKey}
-  constructor(private http: Http) { }
-
-  public getPosts(): Observable<any> {
-    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers }); // Create a request option
-
-    return this.http.get(this.myPostsUrl, options)
-                     .map(this.extractData) // ...and calling .json() on the response to return data
-                     .catch(this.handleErrorObservable); 
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body.items || {};
-  }
+  headers: Headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+  options: RequestOptions = new RequestOptions({ headers: this.headers }); // Create a request option
   
-  private handleErrorObservable (error: Response | any) {
-	  return Observable.throw(error.message || error);
+  constructor(
+    private http: Http
+  ) { }
+
+  //Return all posts from this blog.
+  public getPosts(): Observable<any> {
+    let getPostsUrl: string = `${this.baseUrl}/${this.blogId}/posts?key=${this.apiKey}`;
+    return this.http.get(getPostsUrl, this.options)
+                     .map((res: Response)=>{
+                        let body = res.json();
+                        return body.items || {};
+                     })
+                     .catch((error: Response | any) => {
+                          return Observable.throw(error.message || error);
+                      }); 
+  }
+
+  //Returns a single post from this blog based on id.
+  public getPost(postId: String): Observable<any> {
+    let getPostUrl: string = `${this.baseUrl}/${this.blogId}/posts/${postId}?key=${this.apiKey}`;
+    return this.http.get(getPostUrl, this.options)
+                     .map((res: Response)=>{
+                        let body = res.json();
+                        return body;
+                     })
+                     .catch((error: Response | any) => {
+                        return Observable.throw(error.message || error);
+                     }); 
   }
 }

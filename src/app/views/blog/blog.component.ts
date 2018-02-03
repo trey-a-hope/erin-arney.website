@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService }       from '../../services/blog.service';
+import { Router }            from '@angular/router';
 
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
   posts: [any];
 
-  constructor(private blogService: BlogService) { }
+  constructor(
+    private blogService : BlogService,
+    private router : Router
+  ) { }
 
   ngOnInit() {
     this.getBlogPosts();
@@ -19,6 +23,10 @@ export class BlogComponent implements OnInit {
     this.blogService.getPosts().subscribe(data => {
       this.posts = data;
     });
+  }
+
+  private goToBlog(postId: number): void {
+    this.router.navigate(['/full-blog'], { queryParams: { id: postId } });
   }
 
   public share(provider: string, blogUrl: string): void {
