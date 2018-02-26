@@ -12,3 +12,10 @@
 .jumbotron {
     background: $primaryColorLight !important;
 }
+
+.rounded-circle{
+    border-radius: 50% !important;
+}
+
+h1 { @include h1; }
+p { @include p; }

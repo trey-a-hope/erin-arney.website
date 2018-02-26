@@ -3,3 +3,16 @@ $primaryColorLight: lighten($primaryColor,20%);
 
 $secondaryColor: rgb(240, 0, 0);
 $secondaryColorLight: lighten($secondaryColor, 20%);
+
+@mixin h1 {
+    font-family: Catamaran;
+    font-weight: 800!important;
+}
+  
+@mixin p {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 2.25;
+    margin-bottom: 25px;
+    word-spacing: -.1px;
+}

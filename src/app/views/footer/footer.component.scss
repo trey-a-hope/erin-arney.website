@@ -1,0 +1,17 @@
+@import '~sass/variables';
+@import '~sass/mixins';
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    line-height: 60px;
+    background-color: $primaryColor;
+}
+
+p {
+    color: white;
+}
+
+a {
+    color: white;
+}

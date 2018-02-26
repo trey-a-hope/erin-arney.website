@@ -12,3 +12,6 @@
 .jumbotron {
     background: $primaryColorLight !important;
 }
+
+h1 { @include h1; }
+p { @include p; }
