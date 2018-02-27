@@ -1,38 +1,41 @@
 <div class="container">
-        <!-- Name required alert. -->
-        <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.name.errors && attemptedSave)">
-            <p><span class="alert-link">Error</span> {{ "name" | alerttext }}</p>
-        </div> 
-        <!-- Email required alert. -->
-        <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.email.errors && attemptedSave)">
-            <p><span class="alert-link">Error</span> {{ "email" | alerttext }}</p>
-        </div>
-        <!-- Email required alert. -->
-        <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.phoneNumber.errors && attemptedSave)">
-            <p><span class="alert-link">Error</span> {{ "phone-number" | alerttext }}</p>
-        </div>
-        <!-- Message required alert. -->
-        <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.message.errors && attemptedSave)">
-            <p><span class="alert-link">Error</span> {{ "message" | alerttext }}</p>
-        </div> 
-        <!-- Email sent alert. -->
-        <div class="alert alert-success animated fadeIn" role="alert" [hidden]="!successMessageShowing">
-                <p><span class="alert-link">Success </span> {{ "contact-sent" | alerttext }}</p>
-            </div>
-        <!-- Email failed alert. -->
-        <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!errorMessageShowing">
-            <p><span class="alert-link">Error </span> {{ "contact-failed" | alerttext }}</p>
-        </div>
-    <div class="jumbotron">
-        <h1 class="animated slideInLeft title">Contact</h1>
-        <hr>
-        <p class="animated slideInRight subTitle">Let’s link. I’d love to hear from you.</p>
-        <p class="animated slideInRight subTitle">Interested in working together? Shoot me a message. I’m open to speaking engagements, poetry readings, writing work, and preceptorships.</p>
+    <!-- Name required alert. -->
+    <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.name.errors && attemptedSave)">
+        <p><span class="alert-link">Error</span> {{ "name" | alerttext }}</p>
+    </div> 
+    <!-- Email required alert. -->
+    <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.email.errors && attemptedSave)">
+        <p><span class="alert-link">Error</span> {{ "email" | alerttext }}</p>
     </div>
-    <div class="col-xs-12">
-        <div class="row">
-            <form novalidate [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
-                <div class="col-md-6 form-line">
+    <!-- Email required alert. -->
+    <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.phoneNumber.errors && attemptedSave)">
+        <p><span class="alert-link">Error</span> {{ "phone-number" | alerttext }}</p>
+    </div>
+    <!-- Message required alert. -->
+    <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!(contactForm.controls.message.errors && attemptedSave)">
+        <p><span class="alert-link">Error</span> {{ "message" | alerttext }}</p>
+    </div> 
+    <!-- Email sent alert. -->
+    <div class="alert alert-success animated fadeIn" role="alert" [hidden]="!successMessageShowing">
+            <p><span class="alert-link">Success </span> {{ "contact-sent" | alerttext }}</p>
+        </div>
+    <!-- Email failed alert. -->
+    <div class="alert alert-danger animated fadeIn" role="alert" [hidden]="!errorMessageShowing">
+        <p><span class="alert-link">Error </span> {{ "contact-failed" | alerttext }}</p>
+    </div>
+
+    <div class="text-center animated slideInDown">
+        <h1>Contact</h1>
+        <p>Let’s link, I would love to hear from you.</p>
+        
+    </div>
+
+    <hr>
+    
+    <div class="col-xs-12 animated fadeIn">
+        <div class="row text-center">
+            <form novalidate [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div class="col-md-6 form-line col-md-offset-3">
                     <div class="form-group">
                         <label for="exampleInputUsername">Your name</label>
                         <input type="text" class="form-control" id="" placeholder=" Enter Name" formControlName="name">
@@ -45,8 +48,6 @@
                         <label for="telephone">Phone Number</label>
                         <input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit Number ." formControlName="phoneNumber">
                     </div>
-                </div>
-                <div class="col-md-6">
                     <div class="form-group">
                         <label for="description"> Message</label>
                         <textarea class="form-control" id="description" placeholder="Enter Your Message" formControlName="message"></textarea>
@@ -58,4 +59,5 @@
             </form>        
         </div>
     </div>
-</div>
+</div> 
+            

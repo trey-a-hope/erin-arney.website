@@ -1,30 +1,36 @@
 <div class="container">
 
     <div class="text-center animated slideInDown">
-            <h1>Projects</h1>
-            <p>“Truth is that which does not contaminate you, but empowers you… truth is that which can do no harm.”- Gary Zukav. Here are just a few of the ways that I express my truth.</p>
+        <h1>Projects</h1>
+        <p>“Truth is that which does not contaminate you, but empowers you… truth is that which can do no harm.”- Gary Zukav. Here are just a few of the ways that I express my truth.</p>
         
     </div>
 
     <hr>
 
-    <div class="row animated fadeIn">
-        <div class="col-sm-4 text-center">
+    <ul class="nav nav-tabs" style="cursor: pointer">
+        <li (click)="selectTab('Poetry')" [ngClass]="{'active': activeTab == 'Poetry'}"><a>Poetry</a></li>
+        <li (click)="selectTab('Research')" [ngClass]="{'active': activeTab == 'Research'}"><a>Research</a></li>
+    </ul>
+
+    <div class="row animated fadeIn" *ngIf="activeTab == 'Poetry'">
+        <br>
+        <div class="text-center">
             <fa [name]="'book'" [size]=5 [border]=true></fa>
             <h1>Poetry</h1>
             <p>Videos coming soon.</p>
         </div>
-        <div class="col-sm-4 text-center">
+    </div>
+
+    <div class="row animated fadeIn" *ngIf="activeTab == 'Research'">
+        <br>
+        <div class="text-center">
             <fa [name]="'info'" [size]=5 [border]=true></fa>
             <h1>Research</h1>
             <p>Debreaux, M., Mier-Chairez, J., Davis, D. M., Heckard, D., Arney, E., Rosen, D., Kanter, J., Skinta, M., & Williams, M. T. (2016, October). “You are smart for a Black guy”: A qualitative analysis of experiences of racial microaggressions in African American college students. Poster presented at the 2016 Association for Behavioral and Cognitive Therapies Convention, New York City, NY.
                 Microagressions are becoming a well understood term and experienced phenomena in popular culture. This project analyzed the experiences of minority college students to assess different categories of microagressions and develop measures of racism.</p>
             <p>Novik, Y., Khaleel, J., Arney, E., Ramey, A., Heckard, D., & Rosen, D. C. (January, 2017). Utilizing Best practices from psychological science to address racial health disparities in primary care medicine. Poster session presented at the National Multicultural Conference & Summit. Portland, OR. 
                 There is overwhelming evidence that supports the doctor patient relationship as the determining factor in patient outcomes. This study sought to improve compassion and empathy amongst Naturopathic student clinicians working with patients of color.</p>
-        </div>
-        <div class="col-sm-4 text-center">
-            <fa [name]="'file-text'" [size]=5 [border]=true></fa>
-            <h1>Blog</h1>
         </div>
     </div>
 </div> 

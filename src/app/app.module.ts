@@ -30,6 +30,7 @@ import { AlertTextPipe }                    from './pipes/AlertTextPipe';
 import { HashLocationStrategy, 
          LocationStrategy }                  from '@angular/common';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { FullBlogComponent } from './views/full-blog/full-blog.component';
 
 // enableProdMode();  //TODO: UNCOMMENT BEFORE PUSHING TO PROD.
 
@@ -44,7 +45,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
     BlogComponent,
     ContactComponent,
     AlertTextPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FullBlogComponent
   ],
   imports: [
     BrowserModule,
