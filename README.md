@@ -1,27 +1,42 @@
-# Erinarney.Website
+# Erin Arney Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.
+A personal website for Erin Arney, a writer, student and cancer survivor, with an about page, her poetry and research projects, a blog pulled from Blogger and a contact form. It's an Angular 5 app from 2018 styled with Bootstrap 3.
 
-## Development server
+## Pages
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Routes are defined in `src/app/routing.module.ts`:
 
-## Code scaffolding
+| Path | Component | What it shows |
+| --- | --- | --- |
+| `/` | `HomeComponent` | photo carousel (Los Angeles, Chicago, New York) |
+| `/about` | `AboutComponent` | Erin's story and guiding principles |
+| `/projects` | `ProjectsComponent` | poetry and research publications |
+| `/blog` | `BlogComponent` | posts on health, the Black community and current events |
+| `/full-blog` | `FullBlogComponent` | a single post with share links |
+| `/contact` | `ContactComponent` | name, email, phone and message form |
+| `**` | `PageNotFoundComponent` | 404 page |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How it works
 
-## Build
+- **Blog** (`src/app/services/blog.service.ts`) loads posts from the Blogger API v3 (`googleapis.com/blogger/v3/blogs/{blogId}/posts`), using the blog ID and API key set in that service.
+- **Contact** (`src/app/services/email.service.ts`) posts the form as JSON to `src/assets/sendEmail.php`, so the built site needs a host that runs PHP and can send mail.
+- Images live in `img/`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Tech stack
 
-## Running unit tests
+- Angular 5 with the Angular CLI (`.angular-cli.json`)
+- Bootstrap 3
+- Blogger API v3, a PHP mail script
+- Karma + Jasmine and Protractor (CLI defaults)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Getting started
 
-## Running end-to-end tests
+Requires a Node.js version that Angular CLI 1.x supports (Node 8 or 10).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```sh
+npm install
+npm start          # ng serve on http://localhost:4200
+npm run build      # ng build --prod, output in dist/
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To deploy, upload `dist/` to a PHP-capable web host so the contact form's mail script runs.
